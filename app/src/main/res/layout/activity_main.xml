@@ -19,24 +19,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/foodText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/selectBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/select" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/addBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/add" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/deleteBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/delete" />
@@ -56,7 +56,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
     </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

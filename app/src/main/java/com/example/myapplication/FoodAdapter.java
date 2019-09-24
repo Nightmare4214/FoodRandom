@@ -16,9 +16,9 @@ public class FoodAdapter extends BaseAdapter implements View.OnClickListener{
     private LayoutInflater mInflater;
     private Callback mCallback;
 
-//    public void setItem(int position){
-//        mContentList.
-//    }
+    void add(String food){
+        mContentList.add(new Food(food,true));
+    }
 
     @Override
     public int getCount() {
@@ -37,7 +37,7 @@ public class FoodAdapter extends BaseAdapter implements View.OnClickListener{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder=null;
+        ViewHolder holder;
         if(convertView==null){
             convertView=mInflater.inflate(R.layout.food_item,null);
             holder=new ViewHolder();
@@ -62,9 +62,9 @@ public class FoodAdapter extends BaseAdapter implements View.OnClickListener{
     }
 
     public interface Callback{
-        public void click(View v);
+        void click(View v);
     }
-    public FoodAdapter(Context context, List<Food> contentList, Callback callback){
+    FoodAdapter(Context context, List<Food> contentList, Callback callback){
         this.mContentList=contentList;
         this.mInflater= LayoutInflater.from(context);
         this.mCallback=callback;
@@ -78,39 +78,3 @@ public class FoodAdapter extends BaseAdapter implements View.OnClickListener{
         mCallback.click(v);
     }
 }
-//public class FoodAdapter extends ArrayAdapter<Food> {
-//    //resourceID指定ListView的布局方式
-//    private int resourceID;
-//    //重写BrowserAdapter的构造器
-//    public FoodAdapter(Context context, int textViewResourceID , List<Food> objects){
-//        super(context,textViewResourceID,objects);
-//        resourceID = textViewResourceID;
-//    }
-//    //重写getView()方法，这个方法在子项被滚动屏幕内时调用
-//    @NonNull
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        //获取当前Browser实例
-//        Food food = getItem(position);
-//        View view;
-//        //创建一个viewHolder来缓存控件，这样就不用每次加载的时候都要调用findViewById()来获得控件的实例了
-//        ViewHolder viewHolder;
-//        // 加载布局
-//        if(convertView==null){
-//            //创建
-//            view = LayoutInflater.from(getContext()).inflate(resourceID, parent, false);
-//            viewHolder = new ViewHolder();
-//            viewHolder.food_flag=view.findViewById(R.id.food_flag);
-//            viewHolder.food_name=view.findViewById(R.id.food_name);
-//            //把viewHolder存入view中
-//            view.setTag(viewHolder);
-//        }else {
-//            view = convertView;
-//            //重新取出viewHolder
-//            viewHolder = (ViewHolder) view.getTag();
-//        }
-//        viewHolder.food_name.setText(food.getName());
-//        viewHolder.food_flag.setChecked(food.isFlag());
-//        return view;
-//    }
-//}

@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements FoodAdapter.Callb
         Button deleteBtn = findViewById(R.id.deleteBtn);
         Button selectBtn = findViewById(R.id.selectBtn);
 
+        foodText.setTextColor(Color.BLACK);
         String[] food={"食堂","厨大爷","关键","沙县小吃","烤肉","京都鲜肉饼","德克士","黄焖鸡米饭","海底捞","自助火锅"};
         List<Food> foods=new ArrayList<>();
         for (String s : food) {

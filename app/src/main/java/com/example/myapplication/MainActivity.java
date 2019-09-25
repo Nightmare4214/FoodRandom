@@ -73,6 +73,13 @@ public class MainActivity extends AppCompatActivity implements FoodAdapter.Callb
                 addEditAlert();
             }
         });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                deleteEditAlert();
+            }
+        });
     }
 
     public void addEditAlert(){
@@ -110,6 +117,42 @@ public class MainActivity extends AppCompatActivity implements FoodAdapter.Callb
                 }).setNegativeButton("取消",null).show();
     }
 
+    public void deleteEditAlert(){
+        final FoodAdapter temp=(FoodAdapter)listView.getAdapter();
+        final int food_size=temp.getCount();
+        final EditText et = new EditText(this);
+        et.setInputType(InputType.TYPE_CLASS_NUMBER);
+        new AlertDialog.Builder(this).setTitle(String.format("请输入删除序号(0-%d)",food_size-1))
+                .setIcon(android.R.drawable.sym_def_app_icon)
+                .setView(et)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String input= String.valueOf(et.getText());
+                        if("".equals(input)){
+                            Toast.makeText(
+                                    MainActivity.this,
+                                    "你在想吃peach",
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        try{
+                            int delete_id=Integer.parseInt(input);
+                            if(delete_id<0||delete_id>=food_size){
+                                throw new Exception("faQ");
+                            }
+                            temp.delete(delete_id);
+                            temp.notifyDataSetChanged();
+                        }catch (Exception e){
+                            Toast.makeText(
+                                    MainActivity.this,
+                                    "你在想吃peach",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).setNegativeButton("取消",null).show();
+    }
 
     @Override
     public void click(View v){

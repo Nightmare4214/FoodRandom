@@ -20,6 +20,10 @@ public class FoodAdapter extends BaseAdapter implements View.OnClickListener{
         mContentList.add(new Food(food,true));
     }
 
+    void delete(int position){
+        mContentList.remove(position);
+    }
+
     @Override
     public int getCount() {
         return mContentList.size();
